@@ -89,27 +89,6 @@
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 8px 20px -8px rgba(20, 184, 166, 0.6);
         }
-         .btn-payment {
-            background-color: #334155; /* slate-700 */
-            color: #e2e8f0; /* slate-200 */
-            transition: all 0.2s ease;
-            border: 1px solid #475569; /* slate-600 */
-            font-size: 0.8rem; /* Smaller font for payment buttons */
-        }
-        .btn-payment:hover, .btn-payment.active {
-            background-color: #5eead4; /* teal-300 */
-            color: #0f172a; /* slate-900 */
-            border-color: #5eead4;
-            transform: translateY(-1px);
-        }
-        .btn-payment img { /* DANA logo */
-            height: 1em; /* Adjust size relative to font */
-            width: auto;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 0.25em;
-        }
-
 
         /* Section title animation */
         .section-title-animate {
@@ -123,165 +102,100 @@
         }
         
         /* Hero section title animation */
-        .hero-main-title-container { /* This is the h2 */
-            /* The existing .hero-content > * animation will apply for fade/slide */
-        }
+        .hero-main-title-container { }
         .hero-main-title-wrapper {
             position: relative;
-            display: inline-block; /* So the box fits the text */
-            padding: 0.3em 0.5em; /* Padding around the text for the lines */
+            display: inline-block;
+            padding: 0.3em 0.5em;
         }
         .hero-main-title-wrapper .line {
             position: absolute;
-            background-color: #5eead4; /* Teal color */
-            opacity: 0; /* Start transparent, fade in with animation */
+            background-color: #5eead4;
+            opacity: 0;
         }
-        .hero-main-title-wrapper .line-top {
-            top: 0; left: 0; width: 0; height: 3px;
-            animation: drawTopLine 0.4s linear forwards;
-            animation-delay: 0.7s; /* Start after text is mostly visible (0.2s h2 delay + 0.5s h2 anim) */
-        }
-        .hero-main-title-wrapper .line-right {
-            top: 0; right: 0; width: 3px; height: 0;
-            animation: drawRightLine 0.4s linear forwards;
-            animation-delay: 1.1s; /* 0.7s + 0.4s */
-        }
-        .hero-main-title-wrapper .line-bottom {
-            bottom: 0; right: 0; width: 0; height: 3px; 
-            animation: drawBottomLine 0.4s linear forwards; 
-            animation-delay: 1.5s; /* 1.1s + 0.4s */
-        }
-        .hero-main-title-wrapper .line-left {
-            bottom: 0; left: 0; width: 3px; height: 0; 
-            animation: drawLeftLine 0.4s linear forwards; 
-            animation-delay: 1.9s; /* 1.5s + 0.4s */
-        }
-
-        @keyframes drawTopLine {
-            to { width: 100%; opacity: 1; }
-        }
-        @keyframes drawRightLine {
-            to { height: 100%; opacity: 1; }
-        }
-        @keyframes drawBottomLine { /* Draws from right to left because positioned with right:0 */
-            to { width: 100%; opacity: 1; }
-        }
-        @keyframes drawLeftLine { /* Draws from bottom to top because positioned with bottom:0 */
-            to { height: 100%; opacity: 1; }
-        }
+        .hero-main-title-wrapper .line-top { top: 0; left: 0; width: 0; height: 3px; animation: drawTopLine 0.4s linear forwards; animation-delay: 0.7s; }
+        .hero-main-title-wrapper .line-right { top: 0; right: 0; width: 3px; height: 0; animation: drawRightLine 0.4s linear forwards; animation-delay: 1.1s; }
+        .hero-main-title-wrapper .line-bottom { bottom: 0; right: 0; width: 0; height: 3px; animation: drawBottomLine 0.4s linear forwards; animation-delay: 1.5s; }
+        .hero-main-title-wrapper .line-left { bottom: 0; left: 0; width: 3px; height: 0; animation: drawLeftLine 0.4s linear forwards; animation-delay: 1.9s; }
+        @keyframes drawTopLine { to { width: 100%; opacity: 1; } }
+        @keyframes drawRightLine { to { height: 100%; opacity: 1; } }
+        @keyframes drawBottomLine { to { width: 100%; opacity: 1; } }
+        @keyframes drawLeftLine { to { height: 100%; opacity: 1; } }
 
         /* Hero section content animation */
-        .hero-content > * {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-        .hero-bg-animate {
-            transition: transform 10s ease-out; 
-        }
-        .hero-bg-animate.loaded {
-            transform: scale(1.05);
-        }
+        .hero-content > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+        .hero-bg-animate { transition: transform 10s ease-out; }
+        .hero-bg-animate.loaded { transform: scale(1.05); }
 
         /* Contact item animation */
-        .contact-item {
-            transition: transform 0.3s ease, background-color 0.3s ease;
+        .contact-item { transition: transform 0.3s ease, background-color 0.3s ease; }
+        .contact-item:hover { transform: translateY(-5px) scale(1.03); background-color: #1e293b; }
+        .contact-item i { transition: transform 0.3s ease; }
+        .contact-item:hover i { transform: scale(1.1); }
+
+        /* Payment Section Styles */
+        .payment-tab-btn {
+            flex: 1;
+            padding: 0.75rem 0.5rem;
+            font-weight: 600;
+            color: #94a3b8; /* slate-400 */
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
         }
-        .contact-item:hover {
-            transform: translateY(-5px) scale(1.03);
-            background-color: #1e293b; 
+        .payment-tab-btn.active, .payment-tab-btn:hover {
+            color: #5eead4; /* teal-300 */
+            border-bottom-color: #5eead4;
         }
-        .contact-item i {
-             transition: transform 0.3s ease;
+        .payment-pane { transition: opacity 0.3s ease-in-out; }
+        .payment-detail-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b; /* slate-800 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #334155; /* slate-700 */
         }
-        .contact-item:hover i {
-            transform: scale(1.1);
+        .payment-detail-item .logo { height: 24px; margin-right: 1rem; }
+        .payment-detail-item .number { font-weight: 600; font-family: monospace; letter-spacing: 1px; color: #e2e8f0; }
+        .payment-detail-item .name { font-size: 0.875rem; color: #94a3b8; }
+        .copy-btn {
+            background-color: #334155;
+            color: #94a3b8;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
         }
+        .copy-btn:hover { background-color: #475569; }
 
         /* Enhanced Styling for product options select */
         .product-options-select {
-            appearance: none; 
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            display: block;
-            width: 100%;
-            padding-top: 0.625rem; 
-            padding-bottom: 0.625rem; 
-            padding-left: 0.75rem; 
-            padding-right: 2.5rem; 
-            font-size: 0.875rem; 
-            line-height: 1.25rem; 
-            font-weight: 500; 
-            color: #cbd5e1; 
-            background-color: #1e293b; 
-            border: 1px solid #334155; 
-            border-radius: 0.375rem; 
+            appearance: none; -webkit-appearance: none; -moz-appearance: none; display: block; width: 100%;
+            padding: 0.625rem 2.5rem 0.625rem 0.75rem;
+            font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; color: #cbd5e1; 
+            background-color: #1e293b; border: 1px solid #334155; border-radius: 0.375rem;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
-            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.7rem center;
-            background-size: 1.25em 1.25em;
-            cursor: pointer;
+            background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1.25em 1.25em; cursor: pointer;
         }
-        .product-options-select:hover {
-            border-color: #4b5563; 
-            background-color: #273244; 
-        }
-        .product-options-select:focus {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-            border-color: #5eead4; 
-            background-color: #1e293b; 
-            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.4); 
-        }
-        .product-options-select option {
-            background-color: #1e293b; 
-            color: #e2e8f0; 
-            padding: 0.5rem 0.75rem; 
-        }
+        .product-options-select:hover { border-color: #4b5563; background-color: #273244; }
+        .product-options-select:focus { outline: 2px solid transparent; outline-offset: 2px; border-color: #5eead4; box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.4); }
+        .product-options-select option { background-color: #1e293b; color: #e2e8f0; padding: 0.5rem 0.75rem; }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* General fade-in for sections */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Sidebar Overlay for mobile */
-        #sidebarOverlay {
-            transition: opacity 0.3s ease-in-out;
-        }
-        .store-logo-sidebar {
-            width: 50px; 
-            height: 50px; 
-            object-fit: cover; 
-        }
-        .store-logo-header-mobile {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-        }
-        .store-thumbnail-hero {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-        }
-        .store-profile-info {
-            width: 150px; 
-            height: 150px;
-            object-fit: cover;
-        }
-
+        html { scroll-behavior: smooth; }
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        #sidebarOverlay { transition: opacity 0.3s ease-in-out; }
+        .store-logo-sidebar, .store-logo-header-mobile, .store-thumbnail-hero, .store-profile-info { object-fit: cover; }
+        .store-logo-sidebar { width: 50px; height: 50px; }
+        .store-logo-header-mobile { width: 40px; height: 40px; }
+        .store-thumbnail-hero { width: 180px; height: 180px; }
+        .store-profile-info { width: 150px; height: 150px; }
     </style>
 </head>
 <body>
@@ -294,18 +208,11 @@
                 <h1 class="text-3xl font-bold text-white tracking-tight">Xvenzo<span class="text-teal-400">.</span></h1>
             </a>
             <nav class="space-y-2">
-                <a href="#hero" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium">
-                    <i class="fas fa-home w-6 mr-2"></i>Beranda
-                </a>
-                <a href="#products" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium">
-                    <i class="fas fa-cubes w-6 mr-2"></i>Produk
-                </a>
-                <a href="#info" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium">
-                    <i class="fas fa-info-circle w-6 mr-2"></i>Informasi
-                </a>
-                <a href="#contact" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium">
-                    <i class="fas fa-headset w-6 mr-2"></i>Hubungi Kami
-                </a>
+                <a href="#hero" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium"><i class="fas fa-home w-6 mr-2"></i>Beranda</a>
+                <a href="#payment" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium"><i class="fas fa-credit-card w-6 mr-2"></i>Pembayaran</a>
+                <a href="#products" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium"><i class="fas fa-cubes w-6 mr-2"></i>Produk</a>
+                <a href="#info" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium"><i class="fas fa-info-circle w-6 mr-2"></i>Informasi</a>
+                <a href="#contact" class="block py-3 px-4 rounded-lg sidebar-link text-slate-300 font-medium"><i class="fas fa-headset w-6 mr-2"></i>Hubungi Kami</a>
             </nav>
         </div>
         <div class="absolute bottom-0 left-0 w-full p-6 text-center text-xs text-slate-500">
@@ -328,6 +235,7 @@
         <section id="hero" class="pt-20 md:pt-0 min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white p-6 relative overflow-hidden">
             <div class="absolute inset-0 hero-bg-animate" style="background-image: url('https://placehold.co/1600x1000/020617/1e293b?text=Solusi+Digital+Premium'); background-size: cover; background-position: center; opacity: 0.3;"></div>
             <div class="relative z-10 bg-black/50 backdrop-blur-sm p-8 md:p-16 rounded-2xl text-center shadow-2xl hero-content max-w-3xl">
+                <img src="https://files.catbox.moe/o57rwe.jpg" alt="Thumbnail Xvenzo Store" class="store-thumbnail-hero mx-auto mb-8 rounded-full border-4 border-teal-400 shadow-xl" style="animation-delay: 0.1s;">
                 <h2 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight hero-main-title-container" style="animation-delay: 0.2s;">
                     <span class="hero-main-title-wrapper">
                         Xvenzo <span class="text-teal-400">Official Store</span>
@@ -346,15 +254,97 @@
             </div>
         </section>
 
-        <section id="products" class="py-20 bg-slate-900 fade-in-section">
+        <!-- Payment Section -->
+        <section id="payment" class="py-20 bg-slate-900 fade-in-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12 text-teal-400 section-title-animate">Metode Pembayaran</h2>
+                <div class="max-w-2xl mx-auto bg-slate-800/50 p-2 sm:p-4 rounded-xl shadow-2xl">
+                    <!-- Payment Method Tabs -->
+                    <div id="paymentTabs" class="flex border-b border-slate-700">
+                        <button data-target="payment-qris" class="payment-tab-btn active">QRIS</button>
+                        <button data-target="payment-ewallet" class="payment-tab-btn">E-Wallet</button>
+                        <button data-target="payment-bank" class="payment-tab-btn">Bank</button>
+                    </div>
+                    <!-- Payment Content Panes -->
+                    <div id="paymentContent" class="p-4 sm:p-8 min-h-[350px]">
+                        <!-- QRIS Pane -->
+                        <div id="payment-qris" class="payment-pane active text-center">
+                            <h3 class="text-2xl font-semibold text-white mb-2">Pembayaran via QRIS</h3>
+                            <p class="text-slate-400 mb-6">Scan kode QR di bawah ini menggunakan aplikasi E-Wallet atau Mobile Banking Anda.</p>
+                            <img src="https://files.catbox.moe/o57rwe.jpg" alt="QRIS Code Xvenzo Store" class="mx-auto rounded-lg shadow-lg w-64 h-64 object-cover border-4 border-slate-700">
+                            <p class="text-center mt-4 text-md font-semibold text-teal-400">a/n XVENZO OFFICIAL STORE</p>
+                        </div>
+                        <!-- E-Wallet Pane -->
+                        <div id="payment-ewallet" class="payment-pane hidden">
+                            <h3 class="text-2xl font-semibold text-white mb-6">Pembayaran via E-Wallet</h3>
+                            <div class="space-y-4">
+                                <!-- DANA -->
+                                <div class="payment-detail-item">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png" alt="DANA Logo" class="logo">
+                                    <div class="flex-grow">
+                                        <span class="number">0857-7642-3645</span>
+                                        <div class="name">a/n Rexzy Juan</div>
+                                    </div>
+                                    <button class="copy-btn" data-copy="085776423645">Salin</button>
+                                </div>
+                                <!-- OVO -->
+                                <div class="payment-detail-item">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_ovo_purple.svg/2560px-Logo_ovo_purple.svg.png" alt="OVO Logo" class="logo">
+                                    <div class="flex-grow">
+                                        <span class="number">0857-7642-3645</span>
+                                        <div class="name">a/n Rexzy Juan</div>
+                                    </div>
+                                    <button class="copy-btn" data-copy="085776423645">Salin</button>
+                                </div>
+                                <!-- GOPAY -->
+                                <div class="payment-detail-item">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Gopay_logo.svg/2560px-Gopay_logo.svg.png" alt="GOPAY Logo" class="logo">
+                                    <div class="flex-grow">
+                                        <span class="number">0857-7642-3645</span>
+                                        <div class="name">a/n Rexzy Juan</div>
+                                    </div>
+                                    <button class="copy-btn" data-copy="085776423645">Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bank Transfer Pane -->
+                        <div id="payment-bank" class="payment-pane hidden">
+                             <h3 class="text-2xl font-semibold text-white mb-6">Pembayaran via Transfer Bank</h3>
+                             <div class="space-y-4">
+                                <!-- BCA -->
+                                <div class="payment-detail-item">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia_logo.svg/2560px-Bank_Central_Asia_logo.svg.png" alt="BCA Logo" class="logo">
+                                    <div class="flex-grow">
+                                        <span class="number">HUBUNGI ADMIN</span>
+                                        <div class="name">a/n Rexzy Juan</div>
+                                    </div>
+                                    <button class="copy-btn" data-copy="HUBUNGI ADMIN">Salin</button>
+                                </div>
+                                <!-- BRI -->
+                                <div class="payment-detail-item">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BRI_2020.svg/2560px-BRI_2020.svg.png" alt="BRI Logo" class="logo">
+                                    <div class="flex-grow">
+                                        <span class="number">HUBUNGI ADMIN</span>
+                                        <div class="name">a/n Rexzy Juan</div>
+                                    </div>
+                                    <button class="copy-btn" data-copy="HUBUNGI ADMIN">Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="py-20 bg-slate-800/50 fade-in-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center mb-16 text-teal-400 section-title-animate">Produk Unggulan Kami</h2>
                 <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                     </div>
             </div>
         </section>
-
-        <section id="info" class="py-20 bg-slate-950 fade-in-section">
+        
+        <section id="info" class="py-20 bg-slate-900 fade-in-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center mb-16 text-teal-400 section-title-animate">Tentang Xvenzo Store</h2>
                 <div class="max-w-4xl mx-auto bg-slate-800/70 backdrop-blur-sm p-10 rounded-xl shadow-2xl flex flex-col md:flex-row items-center gap-8">
@@ -369,7 +359,7 @@
             </div>
         </section>
 
-        <section id="contact" class="py-20 bg-slate-900 fade-in-section">
+        <section id="contact" class="py-20 bg-slate-800/50 fade-in-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center mb-16 text-teal-400 section-title-animate">Terhubung Dengan Kami</h2>
                 <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -419,100 +409,56 @@
 
     <script>
         // --- CONFIGURATION ---
-        const WHATSAPP_NUMBER = '6285776423645'; // Ganti dengan nomor WhatsApp Anda
+        const WHATSAPP_NUMBER = '6285776423645'; 
 
         const products = [ 
             { 
                 id: 'pterodactyl', 
                 name: 'Panel Pterodactyl', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=Pterodactyl&font=montserrat', 
+                image: 'https://files.catbox.moe/07hz6j.jpg', 
                 description: 'Panel Pterodactyl performa tinggi untuk server game Anda. Mudah dikelola dan powerful.',
                 price: 'Mulai Rp25.000/bln',
-                options: [
-                    'Paket Basic: 1 Core, 1GB RAM, 10GB SSD',
-                    'Paket Standard: 2 Core, 2GB RAM, 25GB SSD',
-                    'Paket Pro: 4 Core, 4GB RAM, 50GB SSD'
-                ]
+                options: [ 'Paket Basic: 1 Core, 1GB RAM', 'Paket Standard: 2 Core, 2GB RAM', 'Paket Pro: 4 Core, 4GB RAM' ]
             },
             { 
                 id: 'wa-bot', 
-                name: 'Bot WhatsApp', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=WA+Bot&font=montserrat', 
-                description: 'Bot WhatsApp otomatis untuk berbagai kebutuhan bisnis, notifikasi, atau grup.',
-                price: 'Mulai Rp50.000',
-                options: [
-                    'Bot Notifikasi Sederhana',
-                    'Bot Auto-Reply Kustom',
-                    'Bot Grup Manajemen'
-                ]
+                name: 'Sewa Bot WhatsApp', 
+                image: 'https://files.catbox.moe/ws2oxn.jpg', 
+                description: 'Layanan sewa bot WhatsApp otomatis untuk tag all member dan download musik dari YouTube.',
+                price: 'Mulai Rp10.000',
+                options: [ 'Sewa 7 Hari: Rp.10.000', 'Sewa 2 Minggu: Rp.15.000', 'Sewa 1 Bulan: Rp.20.000', 'Sewa 2 Bulan: Rp.30.000', 'Sewa 3 Bulan: Rp.40.000' ]
             },
             { 
-                id: 'script-bot', 
-                name: 'Script Bot Kustom', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=Script+Bot&font=montserrat', 
-                description: 'Pembuatan script bot kustom sesuai kebutuhan spesifik Anda (Telegram, Discord, dll).',
-                price: 'Hubungi Kami'
+                id: 'token-pln', 
+                name: 'Token PLN', 
+                image: 'https://img1.pixhost.to/images/6274/607715431_zakzzdev.jpg', 
+                description: 'Layanan token PLN untuk mengatasi listrik mati atau habis.',
+                price: 'Hubungi untuk Stok',
+                options: [ 'Token 13.000', 'Token 18.000', 'Token 23.000', 'Token 53.000', 'Token 103.000', 'Token 200.000' ]
             },
             { 
                 id: 'diamond-game', 
                 name: 'Diamond All Game', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=Game+Diamond&font=montserrat', 
-                description: 'Top-up diamond untuk berbagai game populer (Mobile Legends, Free Fire, PUBG, dll).',
+                image: 'https://files.catbox.moe/e80a9n.jpg', 
+                description: 'Top-up diamond untuk berbagai game populer (ML, FF, PUBG, dll).',
                 price: 'Harga Terbaik',
-                options: [
-                    'Mobile Legends: 100 Diamonds', 'Mobile Legends: 500 Diamonds',
-                    'Free Fire: 140 Diamonds', 'Free Fire: 720 Diamonds',
-                    'PUBG Mobile: 60 UC', 'PUBG Mobile: 325 UC'
-                ]
+                options: [ 'Mobile Legends: 100 Diamonds', 'Free Fire: 140 Diamonds', 'PUBG Mobile: 60 UC' ]
             },
             { 
                 id: 'pulsa', 
                 name: 'Pulsa All Operator', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=Pulsa&font=montserrat', 
-                description: 'Isi ulang pulsa untuk semua operator seluler di Indonesia. Cepat dan mudah.',
+                image: 'https://files.catbox.moe/1t8va8.jpg', 
+                description: 'Isi ulang pulsa untuk semua operator seluler di Indonesia.',
                 price: 'Sesuai Nominal',
-                options: [
-                    'Telkomsel: Rp10.000', 'Telkomsel: Rp25.000', 'Telkomsel: Rp50.000', 'Telkomsel: Rp100.000',
-                    'XL: Rp10.000', 'XL: Rp25.000', 'XL: Rp50.000', 'XL: Rp100.000',
-                    'Indosat: Rp10.000', 'Indosat: Rp25.000', 'Indosat: Rp50.000', 'Indosat: Rp100.000'
-                ]
-            },
-            { 
-                id: 'kuota', 
-                name: 'Kuota All Operator', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=Kuota&font=montserrat', 
-                description: 'Paket data internet untuk semua operator. Berbagai pilihan kuota.',
-                price: 'Sesuai Paket',
-                options: [
-                    'Telkomsel: 1GB, 7 Hari', 'Telkomsel: 5GB, 30 Hari', 'Telkomsel: OMG! 10GB',
-                    'XL: Xtra Combo Lite 3.5GB', 'XL: Xtra Combo VIP 10GB',
-                    'Indosat: Freedom U 2GB', 'Indosat: Freedom Combo 10GB'
-                ]
-            },
-            { 
-                id: 'vps', 
-                name: 'VPS (Virtual Private Server)', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=VPS&font=montserrat', 
-                description: 'Sewa VPS berkualitas dengan berbagai pilihan spesifikasi untuk hosting atau project Anda.',
-                price: 'Mulai Rp75.000/bln',
-                options: [
-                    'VPS Basic: 1 vCPU, 1GB RAM, 25GB SSD',
-                    'VPS Standard: 2 vCPU, 2GB RAM, 50GB SSD',
-                    'VPS Pro: 4 vCPU, 4GB RAM, 100GB SSD',
-                    'VPS Elite: 8 vCPU, 16GB RAM, 200GB SSD'
-                ]
+                options: [ 'Telkomsel: Rp10.000', 'XL: Rp10.000', 'Indosat: Rp10.000' ]
             },
             { 
                 id: 'jasa-follower', 
                 name: 'Jasa Suntik Follower', 
-                image: 'https://placehold.co/300x220/0d9488/ffffff?text=Follower&font=montserrat', 
-                description: 'Tingkatkan popularitas akun media sosial Anda (Instagram, TikTok, Twitter, dll).',
+                image: 'https://files.catbox.moe/fm5uck.jpg', 
+                description: 'Tingkatkan popularitas akun media sosial Anda (IG, TikTok, Twitter).',
                 price: 'Mulai Rp10.000',
-                options: [
-                    'Instagram: 100 Followers', 'Instagram: 500 Followers', 'Instagram: 1000 Followers',
-                    'TikTok: 100 Followers', 'TikTok: 500 Followers', 'TikTok: 1000 Followers',
-                    'Twitter: 100 Followers'
-                ]
+                options: [ 'Instagram: 100 Followers', 'TikTok: 100 Followers', 'Twitter: 100 Followers' ]
             }
         ];
 
@@ -550,84 +496,82 @@
                             <h3 class="text-2xl font-semibold mb-2 text-white">${product.name}</h3>
                             <p class="text-slate-400 text-sm mb-3 flex-grow">${product.description}</p>
                             ${optionsHTML} 
-                            <p class="text-xl font-bold text-teal-400 mt-4 mb-4">${product.price}</p> <div class="mt-auto"> <div class="mb-3">
-                                    <label class="block text-sm font-medium text-slate-400 mb-1">Metode Pembayaran:</label>
-                                    <div class="flex space-x-2 payment-method-options" data-product-id="${product.id}">
-                                        <button class="btn-payment payment-option flex-1 py-2 px-3 rounded-md active" data-payment="whatsapp">
-                                            <i class="fab fa-whatsapp"></i> WhatsApp
-                                        </button>
-                                        <button class="btn-payment payment-option flex-1 py-2 px-3 rounded-md" data-payment="dana">
-                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="DANA" onerror="this.style.display='none'; this.nextSibling.style.display='inline';"> DANA
-                                        </button>
-                                        <button class="btn-payment payment-option flex-1 py-2 px-3 rounded-md" data-payment="qris">
-                                            <i class="fas fa-qrcode"></i> QRIS
-                                        </button>
-                                    </div>
-                                </div>
-                                <button 
-                                    class="btn-primary w-full py-3 px-4 rounded-lg font-semibold text-base buy-button"
-                                    data-product-name="${product.name}"
-                                    data-product-id="${product.id}" 
-                                >
-                                    <i class="fas fa-shopping-cart mr-2"></i> Pesan Sekarang
-                                </button>
-                            </div>
+                            <p class="text-xl font-bold text-teal-400 mt-auto mb-4">${product.price}</p>
+                            <button 
+                                class="btn-primary w-full py-3 px-4 rounded-lg font-semibold text-base buy-button"
+                                data-product-name="${product.name}"
+                                data-product-id="${product.id}" 
+                            >
+                                <i class="fas fa-shopping-cart mr-2"></i> Pesan Sekarang
+                            </button>
                         </div>
                     </div>
                 `;
                 productListContainer.innerHTML += productCard;
             });
             observeElements('.product-card', 'is-visible');
-            
-            // Add event listeners for new payment option buttons
-            document.querySelectorAll('.payment-option').forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.stopPropagation(); // Prevent card click event if any
-                    // Remove active class from siblings within the same product card
-                    this.parentElement.querySelectorAll('.payment-option').forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                });
-            });
         }
 
         function handleBuyButtonClick(event) {
-            // Check if the click is on the buy button itself, not on payment options
-            if (!event.target.closest('.buy-button')) return;
-
             const button = event.target.closest('.buy-button');
+            if (!button) return;
+
             const productName = button.dataset.productName;
             const productId = button.dataset.productId; 
 
             let selectedOptionText = '';
             const optionsSelect = document.getElementById(`options-${productId}`);
-            
             if (optionsSelect && optionsSelect.value) {
                 selectedOptionText = ` (Varian: ${optionsSelect.value})`;
             }
 
-            // Get selected payment method
-            const paymentOptionsWrapper = document.querySelector(`.payment-method-options[data-product-id="${productId}"]`);
-            const selectedPaymentButton = paymentOptionsWrapper ? paymentOptionsWrapper.querySelector('.payment-option.active') : null;
-            const paymentMethod = selectedPaymentButton ? selectedPaymentButton.dataset.payment : 'whatsapp'; // Default to whatsapp
-
-            let messageText = `Halo Xvenzo Store, saya tertarik untuk memesan produk: ${productName}${selectedOptionText}.`;
-
-            if (paymentMethod === 'dana') {
-                messageText += `\nSaya ingin melakukan pembayaran melalui DANA. Mohon info nomor DANA Anda.`;
-            } else if (paymentMethod === 'qris') {
-                messageText += `\nSaya ingin melakukan pembayaran melalui QRIS. Mohon kirimkan kode QRIS Anda.`;
-            } else { // Default to WhatsApp or if OkeeConnect is relevant
-                 if (productId === 'pulsa' || productId === 'kuota') {
-                    messageText += ` Pembayaran melalui akun OkeeConnect. Mohon info selanjutnya.`;
-                } else {
-                    messageText += ` Mohon info selanjutnya untuk pemesanan.`;
-                }
-            }
+            let messageText = `Halo Xvenzo Store, saya tertarik untuk memesan produk: ${productName}${selectedOptionText}. Mohon info selanjutnya mengenai pembayaran.`;
             
             const message = encodeURIComponent(messageText);
             const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
             window.open(whatsappURL, '_blank');
+        }
+        
+        function handlePaymentTabs() {
+            const tabs = document.querySelectorAll('.payment-tab-btn');
+            const panes = document.querySelectorAll('.payment-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Deactivate all
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panes.forEach(p => p.classList.add('hidden'));
+
+                    // Activate clicked tab and pane
+                    tab.classList.add('active');
+                    const targetPane = document.getElementById(tab.dataset.target);
+                    if (targetPane) {
+                        targetPane.classList.remove('hidden');
+                    }
+                });
+            });
+        }
+
+        function handleCopyButtons() {
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const textToCopy = button.dataset.copy;
+                    
+                    const textarea = document.createElement('textarea');
+                    textarea.value = textToCopy;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+
+                    const originalText = button.innerHTML;
+                    button.innerHTML = 'Disalin!';
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
         }
 
         function closeSidebar() {
@@ -699,20 +643,8 @@
             sidebarOverlay.addEventListener('click', closeSidebar); 
         }
 
-        // Updated event listener for product list to delegate clicks
         if (productListContainer) {
-            productListContainer.addEventListener('click', function(event) {
-                const buyButton = event.target.closest('.buy-button');
-                const paymentOptionButton = event.target.closest('.payment-option');
-
-                if (buyButton) {
-                    handleBuyButtonClick(event); // Pass the original event
-                } else if (paymentOptionButton) {
-                    // Handle payment option selection
-                    paymentOptionButton.parentElement.querySelectorAll('.payment-option').forEach(btn => btn.classList.remove('active'));
-                    paymentOptionButton.classList.add('active');
-                }
-            });
+            productListContainer.addEventListener('click', handleBuyButtonClick);
         }
         
         const sidebarLinks = document.querySelectorAll('#sidebar nav a.sidebar-link');
@@ -726,6 +658,7 @@
                 }
             });
         });
+
         function updateActiveLinkOnScroll() {
             let currentSectionId = '';
             const sections = document.querySelectorAll('section[id]'); 
@@ -752,6 +685,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
             animateHeroContent();
+            handlePaymentTabs();
+            handleCopyButtons();
             observeElements('.section-title-animate', 'is-visible');
             observeElements('.fade-in-section', 'is-visible');
             updateActiveLinkOnScroll(); 
